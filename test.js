@@ -60,7 +60,7 @@ function createOutput(input){
 	let destination = "";
 	let final = {};
 
-	arr.forEach((el, i) => {
+	arr.forEach((el) => {
 		// IF UPPERCASE - CREATES ACTION
 		if(el.match(/[A-Z]/)){
 			action += el;
@@ -68,15 +68,12 @@ function createOutput(input){
 		// IF LOWERCASE OR SLASH - CREATE DESTINATION
 		} else if(el.match(/[a-z]|[/]/)) {
 			destination += el
-		}else {
+		} else {
 		// IF NEITHER - EXECUTES ACTION OF DESTINATION
 			switch(true) {
 				case action === "CREATE":
-				console.log("destination: ", destination)
 					let tempDest = destination.split("/");
-					// need to loop through and check previous value in tempdest arr
-					// to see if it's a valid object key name in final or
-					final[tempDest[0]] = {}
+					tempDest.reduce(function(o, s) { return o[s] = {}; }, final);
 					break;
 				case action === "DELETE":
 					// check if that object key exists, if so re-write final object
