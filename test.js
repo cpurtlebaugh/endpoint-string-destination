@@ -64,28 +64,26 @@ function createOutput(input){
 		// IF UPPERCASE - CREATES ACTION
 		if(el.match(/[A-Z]/)){
 			action += el;
-		
 		// IF LOWERCASE OR SLASH - CREATE DESTINATION
 		} else if(el.match(/[a-z]|[/]/)) {
 			destination += el
 		} else {
 		// IF NEITHER - EXECUTES ACTION OF DESTINATION
+			let tempDest = destination.split("/");
 			switch(true) {
 				case action === "CREATE":
-					let tempDest = destination.split("/");
 					tempDest.reduce(function(o, s) { return o[s] = {} }, final);
-					// console.log("final: ", final)
 					break;
 				case action === "DELETE":
 					// check if that object key exists, if so re-write final object
 					// if not skip
-
 					break;
 				case action === "MOVE":
 					// console.log("MOVE DESTINATION", destination)
 					break;
 				case action === "LIST":
-					// print that portion of the final object and it's children
+					console.log("LIST: ", final)
+					break
 			  }
 			// clear temporarily stored values
 			action = "";
