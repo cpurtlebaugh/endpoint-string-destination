@@ -73,11 +73,13 @@ function createOutput(input){
 			switch(true) {
 				case action === "CREATE":
 					let tempDest = destination.split("/");
-					tempDest.reduce(function(o, s) { return o[s] = {}; }, final);
+					tempDest.reduce(function(o, s) { return o[s] = {} }, final);
+					// console.log("final: ", final)
 					break;
 				case action === "DELETE":
 					// check if that object key exists, if so re-write final object
 					// if not skip
+
 					break;
 				case action === "MOVE":
 					// console.log("MOVE DESTINATION", destination)
@@ -89,13 +91,12 @@ function createOutput(input){
 			action = "";
 			destination = "";
 		}
-
-		return final;
 	});
+	return final;
 }
 
 // RUN SCRIPT
 (async function testOutput(){
-	return createOutput(input)
+	console.log(createOutput(input))
 })();
 
