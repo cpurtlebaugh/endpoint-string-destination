@@ -59,6 +59,7 @@ function createOutput(input){
 	// final values
 	let object = {};
 	let printOutput = ``;
+	
 	// temp action and list of actions
 	let action = "";
 	let actions = ["MOVE", "CREATE", "DELETE", "LIST"];
